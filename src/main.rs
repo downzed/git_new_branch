@@ -41,7 +41,18 @@ fn main() {
         println!("{}", res.1);
 
         if res.0 != 0 {
-            package_json::check_and_increment_version();
+            let res = package_json::check_and_increment_version();
+            if res.is_err() {
+                process::exit(0);
+            }
+
+            let res = git_utils::commit_and_push(
+                new_branch_name,
+                format!("chore: {} to main", new_branch_name).as_str(),
+            );
+            if res.is_err() {
+                process::exit(0);
+            }
         } else {
             process::exit(1);
         }

@@ -32,3 +32,35 @@ pub fn create_branch(name: &str) -> (u8, String) {
         )
     }
 }
+
+pub fn commit_and_push(branch_name: &str, message: &str) -> Result<(), String> {
+    let add = Command::new("git")
+        .args(["add", "."])
+        .output()
+        .expect("Failed to execute [git add .]");
+
+    if !add.status.success() {
+        return Err(String::from("Failed to stage changes"));
+    }
+
+    let commit = Command::new("git")
+        .args(["commit", "-m", message])
+        .output()
+        .expect("Failed to execute [git commit -m]");
+
+    if !commit.status.success() {
+        return Err(format!("Failed to commit changes,\n message: {}", message));
+    }
+
+    println!("\n >> Pushing {} to remote...", branch_name);
+    let push = Command::new("git")
+        .args(["push", "-u", "origin", branch_name])
+        .output()
+        .expect("Failed to execute [git push -u origin]");
+
+    if !push.status.success() {
+        return Err(format!("Failed to push branch: {} to remote", branch_name));
+    }
+
+    Ok(())
+}
