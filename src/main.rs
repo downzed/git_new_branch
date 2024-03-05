@@ -1,5 +1,6 @@
 use std::{env, process};
 
+use tui::app;
 use utils::{common, package_json};
 
 use git::git_utils::{self};
@@ -13,7 +14,13 @@ mod utils {
     pub mod package_json;
 }
 
+mod tui {
+    pub mod app;
+}
+
 fn main() {
+    app::run_tui();
+
     if git_utils::check_for_git_root() == 0 {
         process::exit(1);
     }
