@@ -43,6 +43,7 @@ fn is_path_exist(path: &str) -> bool {
     fs::metadata(path).is_ok()
 }
 
+
 fn check_for_git_root() -> u8 {
     if !is_path_exist(".git") {
         eprintln!(".git repo not found. Please clone or init it first.");
@@ -54,8 +55,9 @@ fn check_for_git_root() -> u8 {
 
 fn verify_user_confirm(message: &str, abort_message: &str) {
     println!("{}", message);
-    io::stdout().flush().unwrap();
-
+  
+  io::stdout().flush().unwrap();
+  
     let mut confirm = String::new();
 
     io::stdin()
