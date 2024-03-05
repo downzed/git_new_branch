@@ -1,10 +1,11 @@
 [package]
-name = "git_new_branch"
+name = "rustomate"
 version = "0.1.0"
 edition = "2021"
+authors = ["Ziv Zerr <downzed@gmail.com>"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 serde_json = "1.0.114"
-serde = "1.0.114"
+serde = "1.0.9"

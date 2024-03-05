@@ -68,8 +68,11 @@ If you encounter any issues or have questions, please file an issue on GitHub.
 
 ## TODO:
 
-- Split into smaller functionalities
-- Add better cli interface
+- Add more features
+    - each function in a separate command line argument
+    - better cli interface
+    - colorful output
+- Add better error handling
 - Add tests
 - Add changelog
 
