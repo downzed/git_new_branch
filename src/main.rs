@@ -13,17 +13,18 @@ mod utils {
     pub mod package_json;
 }
 
+mod cli {
+    pub mod app;
+}
+
 fn main() {
     if git_utils::check_for_git_root() == 0 {
         process::exit(1);
     }
 
-    let args: Vec<String> = env::args().collect();
+    cli::app::run();
 
-    if args.len() != 2 {
-        eprintln!("usage: {} <new branch name>", args[0]);
-        process::exit(1);
-    }
+    let args: Vec<String> = env::args().collect();
 
     let new_branch_name = &args[1];
 
@@ -41,7 +42,7 @@ fn main() {
         println!("{}", res.1);
 
         if res.0 != 0 {
-            package_json::check_and_increment_version();
+            package_json::update();
         } else {
             process::exit(1);
         }

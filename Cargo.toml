@@ -9,3 +9,4 @@ authors = ["Ziv Zerr <downzed@gmail.com>"]
 [dependencies]
 serde_json = "1.0.114"
 serde = "1.0.9"
+clap = "4.5.1"
