@@ -1,6 +1,9 @@
 use clap::{arg, Arg, ArgMatches, Command};
 
-use crate::utils::{common, package_json};
+use crate::{
+    git::git_utils,
+    utils::{common, package_json},
+};
 
 fn cli() -> Command {
     // make it blue
@@ -46,10 +49,7 @@ fn handle_matches(matches: &ArgMatches) {
     match matches.subcommand() {
         Some(("po", _)) => {
             println!("Pushing to origin");
-
-            // TODO:
-            // 1. take the current branch name
-            // 2. confirm before pushing
+            git_utils::push_to_origin();
         }
 
         Some(("up", _)) => {
@@ -70,7 +70,7 @@ fn handle_matches(matches: &ArgMatches) {
                     "Branch creation aborted.",
                 );
                 // TODO: create new branch
-                //      git_utils::create_branch(branch_name);
+                git_utils::create_branch(branch_name);
                 // TODO: suggest to push to origin
             }
         }
