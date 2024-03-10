@@ -33,19 +33,34 @@ pub fn create_branch(name: &str) -> (u8, String) {
     }
 }
 
-// fn get_current_branch_name() -> &'str {
-//     "main"
-//     // let output = Command::new("git")
-//     //     .args(["branch", "--show-current"])
-//     //     .output()
-//     //     .expect("Failed to execute git command");
-// }
+fn get_current_branch_name() -> Option<String> {
+    let output = Command::new("git")
+        .args(["branch", "--show-current"])
+        .output()
+        .expect("Failed to execute git command");
+
+    if output.status.success() {
+        Some(String::from_utf8_lossy(&output.stdout).trim().to_string())
+    } else {
+        None
+    }
+}
 
 pub fn push_to_origin() -> (u8, String) {
-    let current_branch_name = "main"; //get_current_branch_name();
+    // TODO:
+    // 1. take the current branch name
+    // 2. confirm before pushing
+    let current_branch_name = get_current_branch_name();
+    if current_branch_name.is_none() {
+        return (0, "Current branch not found".to_string());
+    }
+
+    let current_branch_name = current_branch_name.unwrap();
+
+    println!("Current branch: {:?}", current_branch_name);
 
     let output = Command::new("git")
-        .args(["push", "-u", "origin", current_branch_name])
+        .args(["push", "-u", "origin", &current_branch_name])
         .output()
         .expect("Failed to execute git command");
 
