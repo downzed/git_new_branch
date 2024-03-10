@@ -47,9 +47,6 @@ fn get_current_branch_name() -> Option<String> {
 }
 
 pub fn push_to_origin() -> (u8, String) {
-    // TODO:
-    // 1. take the current branch name
-    // 2. confirm before pushing
     let current_branch_name = get_current_branch_name();
 
     if current_branch_name.is_none() {

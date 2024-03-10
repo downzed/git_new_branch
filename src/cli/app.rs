@@ -48,8 +48,8 @@ fn cli() -> Command {
 fn handle_matches(matches: &ArgMatches) {
     match matches.subcommand() {
         Some(("po", _)) => {
-            println!("Pushing to origin");
-            git_utils::push_to_origin();
+            let res = git_utils::push_to_origin();
+            println!("{}", res.1);
         }
 
         Some(("up", _)) => {
