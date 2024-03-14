@@ -1,78 +1,72 @@
 > playing with rust to automate borring tasks
 
-# Git Branch Creator & Version Updater
+# rustomate: An Experimental Git Workflow Automator
 
-This utility is a Rust-based command-line tool designed to streamline Git workflows. It automates the creation of a new Git branch. If a `package.json` file is present in the root, it also prompts the user to optionally update the version number within the file.
+rustomate is an experimental command-line utility developed in Rust, crafted to enhance and automate specific Git workflows. Its design focuses on simplifying the branch creation process and integrating version management for projects with a `package.json` at the root. Aimed at developers looking to refine their Git operations, rustomate is a testament to the potential for efficiency and innovation in workflow automation.
 
-## Features
+## Key Features
 
-- Check for `.git` directory to ensure the command is run within a Git repository.
-- Create a new Git branch with a user-defined name.
-- Detect `package.json` in the project root and offer version update.
-- Interactive prompts for user confirmations to proceed with actions.
+- **Git Repository Validation**: Ensures operation within a Git repository by verifying the presence of a `.git` directory.
+- **Branch Creation**: Facilitates the creation of new Git branches based on user input.
+- **Version Management**: Detects `package.json` files and guides the user through the version update process.
+- **Interactive User Experience**: Utilizes interactive prompts to confirm user intentions and streamline operations.
 
 ## Prerequisites
 
-- Git installed and accessible from the command line.
-- Rust and Cargo installed for building the project.
+- **Git**: Must be installed and accessible through the command line.
+- **Rust and Cargo**: Required for compiling the project.
 
-## Getting Started
+## Installation
 
-To use this utility, clone the repository to your local machine and build the project:
+To get started with rustomate, clone the repository and build the project using Cargo:
 
 ```bash
-
-git clone https://github.com/downzed/git_new_branch
-cd git_new_branch
+git clone https://github.com/downzed/rustomate
+cd rustomate
 cargo install --path .
-
 ```
 
+## How to Use
 
-
-## Usage
-
-Run the utility with the desired branch name as an argument:
+Launch rustomate by specifying the desired branch name as an argument:
 
 ```bash
 cargo run -- <new_branch_name>
-```
--- or if installed --
-```bash
-git_new_branch <new_branch_name>
+# or, for global usage
+rustomate <new_branch_name>
 ```
 
-Follow the interactive prompts to create a new branch and optionally update the version in `package.json`.
+Interactive prompts will guide you through creating a new branch and, if applicable, updating the version in `package.json`.
 
-## Example
+### Example Command
 
 ```bash
-cargo run -- feature/new-feature || git_new_branch feature/new-feature
+cargo run -- feature/new-feature
+# or
+rustomate feature/new-feature
 ```
 
-This command will attempt to create a new branch named `feature/new-feature`. If `package.json` is found, it will also prompt to update the version.
+This command initiates the creation of a `feature/new-feature` branch, and if a `package.json` is found, it will prompt for a version update.
 
-## Contributing
+## Contributions
 
-Contributions are welcome! Feel free to open an issue or submit a pull request.
+Your contributions to rustomate are welcome, especially those that enhance its experimental features or address potential issues. Feel free to open an issue or submit a pull request.
 
 ## License
 
-This project is licensed under [MIT](LICENSE).
+rustomate is made available under the [MIT License](LICENSE), encouraging open and collaborative development.
 
 ## Support
 
-If you encounter any issues or have questions, please file an issue on GitHub.
+If you encounter any problems or have suggestions, please file an issue on our GitHub repository.
 
+## Future Enhancements
 
+- **Feature Expansion**: Introducing new functionalities, accessible through distinct command-line arguments.
+- **UI Improvements**: Enhancing the CLI interface for a better user experience.
+- **Colorful Output**: Implementing colorful output for improved readability and engagement.
+- **Error Handling**: Developing more sophisticated error handling mechanisms for enhanced reliability.
+- **Testing**: Establishing a comprehensive test suite to ensure the utility's stability and functionality.
+- **Change Documentation**: Maintaining a changelog to document and communicate changes effectively.
 
-## TODO:
-
-- Add more features
-    - each function in a separate command line argument
-    - better cli interface
-    - colorful output
-- Add better error handling
-- Add tests
-- Add changelog
-
+**Note**: As rustomate is an experimental tool tailored for specific workflows, it is continuously under development. Features and functionalities may evolve to better meet workflow needs.
