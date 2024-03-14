@@ -41,9 +41,9 @@ Interactive prompts will guide you through creating a new branch and, if applica
 ### Example Command
 
 ```bash
-cargo run -- feature/new-feature
+cargo run -- new feature/new-feature
 # or
-rustomate feature/new-feature
+rustomate new feature/new-feature
 ```
 
 This command initiates the creation of a `feature/new-feature` branch, and if a `package.json` is found, it will prompt for a version update.
